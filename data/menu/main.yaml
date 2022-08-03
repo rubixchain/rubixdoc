@@ -1,7 +1,0 @@
----
-main:
-  - name : Introduction 
-    ref: "introduction"
-  - name : DID 
-    ref: "did"
-  

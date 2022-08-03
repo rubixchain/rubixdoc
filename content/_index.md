@@ -1,4 +1,5 @@
 ---
+date: "2022-06-01T20:40:23.389Z"
 title: Home
 # type: post
 aliases: ["/learn-more", "/intro"]
