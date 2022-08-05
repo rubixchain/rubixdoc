@@ -1,8 +1,10 @@
 package main
 
 import (
+	"strings"
 	"time"
 
+	"github.com/EnsurityTechnologies/enscrypt"
 	"github.com/EnsurityTechnologies/ensweb"
 	"github.com/EnsurityTechnologies/logger"
 	"github.com/gorilla/sessions"
@@ -50,7 +52,9 @@ func NewServer(cfg *Config, log logger.Logger) (*Server, error) {
 func (s *Server) RegisterRoutes() {
 	s.AddRoute("/", "GET", s.Login)
 	s.AddRoute("/", "POST", s.LoginRequest)
-	s.AddPrefixRoute("/Docport/", "../public/", s.SessionAuthHandle(&ensweb.BasicToken{}, sessionStore, "auth-token", s.ServerStatic, s.LoginPage))
+	s.AddRoute("/register", "GET", s.Regsiter)
+	s.AddRoute("/register", "POST", s.RegsiterRequest)
+	s.AddPrefixRoute("/Docport/", "./public/", s.SessionAuthHandle(&ensweb.BasicToken{}, sessionStore, "auth-token", s.ServerStatic, s.LoginPage))
 }
 
 func (s *Server) LoginPage(req *ensweb.Request) *ensweb.Result {
@@ -86,4 +90,59 @@ func (s *Server) LoginRequest(req *ensweb.Request) *ensweb.Result {
 	}
 	s.SetSessionCookies(req, sessionStore, "auth-token", lr.Token)
 	return s.Redirect(req, "/Docport/")
+}
+
+func (s *Server) Regsiter(req *ensweb.Request) *ensweb.Result {
+	return s.RenderFile(req, "register.html", false)
+}
+
+func (s *Server) RegsiterPage(req *ensweb.Request) *ensweb.Result {
+	return s.Redirect(req, "/register")
+}
+
+func (s *Server) RegsiterRequest(req *ensweb.Request) *ensweb.Result {
+
+	mp, err := s.ParseFORM(req)
+	if err != nil {
+		return s.RegsiterPage(req)
+	}
+	n, ok := mp["name"]
+	if !ok {
+		return s.RegsiterPage(req)
+	}
+	u, ok := mp["username"]
+	if !ok {
+		return s.RegsiterPage(req)
+	}
+	p1, ok := mp["password_one"]
+	if !ok {
+		return s.RegsiterPage(req)
+	}
+	p2, ok := mp["password_two"]
+	if !ok {
+		return s.RegsiterPage(req)
+	}
+
+	if p1.(string) != p2.(string) {
+		return s.RegsiterPage(req)
+	}
+
+	us := ensweb.User{
+		Base: ensweb.Base{
+			TenantID: req.TenantID,
+		},
+		UserName:           u.(string),
+		NormalizedUserName: strings.ToUpper(u.(string)),
+		Name:               n.(string),
+		PasswordHash:       enscrypt.HashPassword(p1.(string), 3, 1, 1000),
+	}
+
+	err = s.CreateUser(&us)
+
+	if err != nil {
+		s.log.Error("failed to create user", "err", err)
+		return s.RegsiterPage(req)
+	}
+	s.log.Info("User Created", "username", us.UserName)
+	return s.RegsiterPage(req)
 }
