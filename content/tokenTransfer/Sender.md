@@ -10,8 +10,9 @@
 2. Sender Auth by Receiver
 3. Tokens and chains Auth by Receiver
 4. Consensus
-5. Unpinning
-6. Final steps
+5. Sign the token-chain for immutability 
+6. Unpinning 
+7. Final steps
 
 > *Note: The flow is considering all success codes received by the receiver and quorum during the whole transfer*
 *In any case of failure or transaction abortion, the failure message will be returned to the API*
@@ -47,17 +48,23 @@ Send the sender Peer ID for sender authentication by Receiver
    - The amount that is currently being sent
    - Amount ledger for each part token to keep track of how much part of the token has already been spent (how much of a token is remaining in parts to be sent)
 
-CONSENSUS SET UP  
-Assemble the following data for consensus  
+### CONSENSUS 
+1. Assemble the following data for consensus  
    - Tid
    - Message
    - Receiver DID
    - Private share location of the sender
    - Tokens
    - Alpha beta and gamma list
+2. Run consensus
 
 ### AUTHENTICATE CONSENSUS DETAILS BY THE RECEIVER
 Send the status (Consensus Reached or failed) and quorum signatures to the receiver for verification
+
+### SIGN TOKEN-CHAIN FOR IMMUTABILITY
+1. Request the receiver to provide the new blocks being added to the token-chain
+2. Hash and Sign the whole token-chain for every token transferred (to be added in receiver side)
+3. Hashes and Signatures of respective token-chains will be sent back to the receiver
 
 ### UNPINNING
 1. Unpin all tokens from the local node  
