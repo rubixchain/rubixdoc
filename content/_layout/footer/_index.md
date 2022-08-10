@@ -288,22 +288,22 @@ body footer {
         <ul>
           <li>
             <a href="https://www.facebook.com/EnsurityTech/" title="Facebook">
-              <img width="24" height="24" alt="Like us on Facebook" src="/images/fb.png">
+              <img width="24" height="24" alt="Like us on Facebook" src="/Docport/images/fb.png">
             </a>
           </li>
           <li>
             <a href="https://www.linkedin.com/company/ensurity/" title="LinkedIn">
-              <img width="26" height="26" alt="LinkedIn" src="/images/linkedin.png">
+              <img width="26" height="26" alt="LinkedIn" src="/Docport/images/linkedin.png">
             </a>
           </li>
           <li>
             <a href="https://www.youtube.com/channel/UCPsYVSci8BuAB61cGyzTdcw/featured" target="_blank">
-              <img width="26" height="26" alt="Latest Videos" src="/images/youtube.png">
+              <img width="26" height="26" alt="Latest Videos" src="/Docport/images/youtube.png">
             </a>
           </li>
            <li>
             <a href="https://twitter.com/ensuritytech" title="Twitter">
-              <img width="26" alt="Follow us on Twitter" src="/images/twitterr.png">
+              <img width="26" alt="Follow us on Twitter" src="/Docport/images/twitterr.png">
             </a>
           </li>
         </ul>
