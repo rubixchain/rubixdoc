@@ -1,5 +1,5 @@
 # Sender
-![Sender Side Flow](Sender-Flowchart.png)
+![Sender Side Flow](/Docport/tokenTransfer/Sender-Flowchart.png)
 ### Token Sender - *Public Function*
 ### Function name: *Send*
 ### Parameters: *data(String), ipfs(IPFS), port(Integer)*

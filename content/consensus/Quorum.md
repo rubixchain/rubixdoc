@@ -1,5 +1,5 @@
 # Quorum
-![Quorum Side Flow](Quorum-Flowchart.png)
+![Quorum Side Flow](/Docport/consensus/Quorum-Flowchart.png)
 ### Quorum Consensus - *Public Function*
 ### Function: *Implements Runnable*
 ### Parameters: *-*

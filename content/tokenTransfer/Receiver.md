@@ -1,5 +1,5 @@
 # Receiver
-![Receiver Side Flow](Receiver-Flowchart.png)
+![Receiver Side Flow](/Docport/tokenTransfer/Receiver-Flowchart.png)
 ### Token Receiver - *Public Function*
 ### Function name: *Receive*
 ### Parameters: *-*
