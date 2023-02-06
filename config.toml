@@ -1,4 +1,4 @@
-baseURL = "https://docs.rubixnet.io:6010/Docport/"
+baseURL = "https://docs.rubixnet.io:6010/"
 
 languageCode = "en-us"
 DefaultContentLanguage = "en"

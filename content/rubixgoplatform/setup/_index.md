@@ -1,6 +1,6 @@
 ---
 alwaysopen: false
-date: "2022-08-09T10:42:11.812Z"
+date: "2023-02-06T10:42:11.812Z"
 description: Setup
 head: <hr/>
 title: Setup
@@ -26,7 +26,7 @@ Use the following commands
 Run Command
 : To run the Rubix node use this command. 
 ```
-./rubixgoplatform run -p node1 -n 0 -s
+./rubixgoplatform run -p node1 -n 0 -s -testNet
 
 This following options are used to run the Rubix node
   -c string
@@ -93,16 +93,145 @@ This following options are used for this command
   -port string
         Server/Host port (default "20000")
 ```
-Enable Explorer Service Command
-: To enable explorer service on the node use this command.
+Get All Bootstrap Command
+: To get all bootstrap from node use this command.
 ```
-./rubixgoplatform enableexplorer 
+./rubixgoplatform getallbootstrap
 
 This following options are used for this command
   -addr string
         Server/Host Address (default "localhost")
   -port string
         Server/Host port (default "20000")
+```
+Create DID Command
+: To create DID use this command.
+```
+./rubixgoplatform createdid
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+  -didType int
+        DID type (0-Basic Mode, 1-Standard Mode, 2-Wallet Mode) (default 0)
+  -didSecret string
+        DID secret (default "My DID Secret")
+  -privPWD string
+        Private key password (default "mypassword")
+  -quorumPWD string
+        Quroum key password (default "mypassword")
+  -imgFile string
+        Image file to create DID (Must be 256x256 PNG image) (default "image.png")
+  -didImgFile string
+        DID image file name (default "did.png")
+  -privImgFile string
+        DID private share image file name (default "pvtShare.png")
+  -pubImgFile string
+        DID public share image file name (default "pubShare.png")
+  -privKeyFile string
+        DID private key file name (default "pvtKey.pem")
+  -pubKeyFile string
+        DID public key file name (default "pubKey.pem")
+```
+Get All DID Command
+: To get all DID use this command.
+```
+./rubixgoplatform getalldid
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+```
+To Register DID Command
+: To register DID & PeerID map on the network use this command.
+```
+./rubixgoplatform registerdid 
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+  -did string
+        DID address (default "")
+```
+To Add Quorum List
+: To add quorum list use this command.
+```
+./rubixgoplatform addquorum
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+  -quorumList string
+        quorum list file name (default "quorumlist.json")
+```
+To Get All Quorum List
+: To get all quorum list use this command.
+```
+./rubixgoplatform getallquorum
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+```
+To Remove All Quorum List
+: To remove all quorum list use this command.
+```
+./rubixgoplatform removeallquorum
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+```
+To Setup Quorum
+: To setup quorum use this command. This setup quorum by providn quorum private key password.
+```
+./rubixgoplatform setupquorum
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+  -quorumPWD string
+        Quroum key password (default "mypassword")
+```
+To Setup Quorum
+: To setup quorum use this command. This setup quorum by providn quorum private key password.
+```
+./rubixgoplatform setupquorum
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+  -quorumPWD string
+        Quroum key password (default "mypassword")
+```
+To Setup Service Command
+: To setup service on the node use this command.
+```
+./rubixgoplatform setupservice 
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+  -srvName string
+        Service name (default "explorer_service")
   -dbAddress string
         Database address (default "localhost")
   -dbName string
@@ -116,5 +245,87 @@ This following options are used for this command
   -dbUsername string
         Database username (default "sa")
 ```
+To Generate Test RBT Command
+: To generate test RBT on the node use this command.
+```
+./rubixgoplatform generatetestrbt 
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+  -did string
+        DID address (default "")
+  -numTokens int
+        Number tokens to be generated (default 1)
+  -fp 
+        Force password to be entered on the terminal
+  -privPWD string
+        Private key password (default "mypassword")
+  -privImgFile string
+        DID private share image file name (default "pvtShare.png")
+  -privKeyFile string
+        DID private key file name (default "pvtKey.pem")
+```
+To Transfer RBT Command
+: To trasnfer RBT on the node use this command.
+```
+./rubixgoplatform transferrbt 
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+  -senderAddr string
+        Sender address (default "")
+  -receiverAddr string
+        Receiver address (default "")
+  -rbtAmount float
+        RBT amount to trasnfered (default 0.0)
+  -transComment string
+        Transfer comment (default "Test tranasaction")
+  -transType int
+        Transaction type (default 2)
+  -fp 
+        Force password to be entered on the terminal
+  -privPWD string
+        Private key password (default "mypassword")
+  -privImgFile string
+        DID private share image file name (default "pvtShare.png")
+  -privKeyFile string
+        DID private key file name (default "pvtKey.pem")
+```
+To Get Account Info Command
+: To get account information on the node use this command.
+```
+./rubixgoplatform getaccountinfo 
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+  -did string
+        DID address (default "")
+```
+To Dump Token Chain Command
+: To dump token chain on the node use this command.
+```
+./rubixgoplatform dumptokenchain 
+
+This following options are used for this command
+  -addr string
+        Server/Host Address (default "localhost")
+  -port string
+        Server/Host port (default "20000")
+  -token string
+        Token address (default "")
+```
+
+
+
+
 
 {{% children description="true"   %}}

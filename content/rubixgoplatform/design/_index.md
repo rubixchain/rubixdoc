@@ -8,7 +8,7 @@ weight: 1
 ---
 
 Top level architecture digram of the implemntation is show below.
-![Sender Side Flow](/Docport/rubixgoplatform/design/design.png)
+![Sender Side Flow](/rubixgoplatform/design/design.png)
 
 
 {{% children description="true"   %}}
